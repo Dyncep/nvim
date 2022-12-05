@@ -46,6 +46,9 @@ return packer.startup(function(use)
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "lewis6991/impatient.nvim" })
+  use({ "windwp/nvim-autopairs" })
+  use({ "nvim-treesitter/nvim-treesitter" })
+
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim" })
