@@ -4,18 +4,26 @@ if not status_ok then
 end
 
 local servers = {
-  "sumneko_lua",
   "cssls",
   "html",
   "tsserver",
-  "pyright",
-  "bashls",
   "jsonls",
   "yamlls",
   "clangd",
-  "phpactor",
-  "intelephense"
+  "intelephense",
+  "jedi_language_server",
+  "rust_analyzer",
+  "eslint"
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+  }
+)
 
 lsp_installer.setup()
 
@@ -40,6 +48,20 @@ for _, server in pairs(servers) do
   if server == "pyright" then
     local pyright_opts = require "user.lsp.settings.pyright"
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+  end
+
+  if server == "eslint" then
+    local eslint_opts = {
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+        on_attach(client, bufnr)
+        enable_format_on_save(client, bufnr)
+      end,
+    }
+    opts = vim.tbl_deep_extend("force", eslint_opts, opts)
   end
 
   lspconfig[server].setup(opts)

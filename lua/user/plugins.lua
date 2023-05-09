@@ -48,17 +48,25 @@ return packer.startup(function(use)
 	use({ "lewis6991/impatient.nvim" })
   use({ "windwp/nvim-autopairs" })
   use({ "nvim-treesitter/nvim-treesitter" })
+  use({'williamboman/mason.nvim'})
+  use({'williamboman/mason-lspconfig.nvim'})
 
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim" })
 
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
-	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-	use({ "hrsh7th/cmp-path" }) -- path completions
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
+  -- Completion framework:
+  use 'hrsh7th/nvim-cmp' 
+  -- LSP completion source:
+  use 'hrsh7th/cmp-nvim-lsp'
+  -- Useful completion sources:
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/cmp-vsnip'                             
+  use 'hrsh7th/cmp-path'                              
+  use 'hrsh7th/cmp-buffer'                            
+  use 'hrsh7th/vim-vsnip'
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
@@ -96,11 +104,13 @@ return packer.startup(function(use)
 	use({ "junegunn/gv.vim" })
 	use({ "tpope/vim-fugitive" })
 
-	use({ "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" }) --snippet engine
-	use({ "rafamadriz/friendly-snippets", commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1" }) -- a bunch of snippets to use
+	use({ "L3MON4D3/LuaSnip" }) --snippet engine
+	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
-	use({ "AlxHnr/null-ls-bean-check.nvim" })
-	use({ "nathangrigg/vim-beancount" })
+	use({ "phaazon/hop.nvim" })
+  use({"folke/lua-dev.nvim" })
+
+  use({"simrat39/rust-tools.nvim"})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
