@@ -13,7 +13,8 @@ local servers = {
   "intelephense",
   "jedi_language_server",
   "rust_analyzer",
-  "eslint"
+  "eslint",
+  "astro"
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

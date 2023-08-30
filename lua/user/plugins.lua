@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use({"folke/lua-dev.nvim" })
 
   use({"simrat39/rust-tools.nvim"})
+  use({'wuelnerdotexe/vim-astro'})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
