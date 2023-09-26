@@ -9,10 +9,6 @@ keymap.set('n', 'm', function()
   require 'hop'.hint_words()
 end)
 
-keymap.set('v', 'j', function()
-  require 'hop'.hint_lines_skip_whitespace()
-end)
-
 -- reimplement f / F
 keymap.set('n', 'f',
   "<cmd>:lua require'hop'.hint_char1({direction = require'hop.hint'.HintDirection.AFTER_CURSOR,current_line_only = true})<cr>")
